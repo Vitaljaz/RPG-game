@@ -17,6 +17,11 @@ Game::~Game()
 	}
 }
 
+void Game::closeApplication()
+{
+	std::cout << "Close app" << std::endl;
+}
+
 void Game::initWindow()
 {
 	window = new sf::RenderWindow(sf::VideoMode(800, 600), "RPG");
@@ -44,7 +49,21 @@ void Game::update()
 	updateSFMLEvents();
 
 	if (!states.empty())
+	{
 		states.top()->update(this->dt);
+
+		if (states.top()->getEnd())
+		{
+			states.top()->endState();
+			delete states.top();
+			states.pop();
+		}
+	}
+	else
+	{
+		closeApplication();
+		window->close();
+	}
 }
 
 void Game::render()

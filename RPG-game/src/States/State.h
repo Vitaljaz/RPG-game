@@ -15,7 +15,12 @@ class State
 public:
 	State(sf::RenderWindow *window);
 	
+	const bool& getEnd() const;
+
+	virtual void checkEndState();
+
 	virtual void endState() = 0;
+	virtual void updateKeybinds(const float dt) = 0;
 	virtual void update(const float dt) = 0;
 	virtual void render(sf::RenderTarget *target = nullptr) = 0;
 
@@ -24,5 +29,7 @@ public:
 private:
 	sf::RenderWindow *window;
 	std::vector<sf::Texture*> textures;
+
+	bool isEnd;
 };
 

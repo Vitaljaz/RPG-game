@@ -7,6 +7,8 @@ public:
 	Game();
 	virtual ~Game();
 
+	void closeApplication();
+
 	void run();
 	void update();
 	void render();
