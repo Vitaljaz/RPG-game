@@ -2,6 +2,8 @@
 
 #include "State.h"
 
+#include "../Entities/Entity.h"
+
 class GameState : public State
 {
 public:
@@ -13,7 +15,8 @@ public:
 	void render(sf::RenderTarget *target = nullptr) override;
 
 	virtual ~GameState();
-private:
 
+private:
+	Entity player;
 };
 

@@ -26,7 +26,7 @@ public:
 
 	virtual ~State();
 
-private:
+protected:
 	sf::RenderWindow *window;
 	std::vector<sf::Texture*> textures;
 

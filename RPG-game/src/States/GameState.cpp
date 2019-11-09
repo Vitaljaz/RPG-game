@@ -17,10 +17,12 @@ void GameState::updateKeybinds(const float dt)
 void GameState::update(const float dt)
 {
 	updateKeybinds(dt);
+	player.update(dt);
 }
 
 void GameState::render(sf::RenderTarget * target)
 {
+	player.render(window);
 }
 
 
