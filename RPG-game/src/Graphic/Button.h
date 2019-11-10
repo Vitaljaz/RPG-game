@@ -3,17 +3,25 @@
 #include "SFML/Graphics.hpp"
 #include "SFML/System.hpp"
 
+enum class ButtonStates : int { BTN_IDLE, BTN_HOVER, BTN_PRESSED };
+
 class Button
 {
 public:
-	Button();
-	Button(float x, float y, float w, float h, sf::Font *font, std::string text);
+	Button(float x, float y, float w, float h, std::string text);
 	virtual ~Button();
 
 	void update(const sf::Vector2f mousePosition);
 	void render(sf::RenderTarget *target);
 
-public:
+	const bool isPressed();
+
+private:
+	bool pressed;
+	bool hover;
+
+	ButtonStates buttonState;
+
 	sf::RectangleShape shape;
 	sf::Font *font;
 	sf::Text text;
@@ -21,5 +29,7 @@ public:
 	sf::Color idleColor;
 	sf::Color hoverColor;
 	sf::Color activeColor;
+
+	void initFont();
 };
 

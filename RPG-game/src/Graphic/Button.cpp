@@ -1,17 +1,14 @@
 #include "Button.h"
 
-
-
-Button::Button()
+Button::Button(float x, float y, float w, float h, std::string text)
 {
-}
+	initFont();
 
-Button::Button(float x, float y, float w, float h, sf::Font * font, std::string text)
-{
 	shape.setPosition(sf::Vector2f(x, y));
 	shape.setSize(sf::Vector2f(w, h));
 	
-	this->font = font;
+	buttonState = ButtonStates::BTN_IDLE;
+
 	this->text.setFont(*this->font);
 	this->text.setString(text);
 	this->text.setFillColor(sf::Color::White);
@@ -35,13 +32,55 @@ Button::~Button()
 
 void Button::update(const sf::Vector2f mousePosition)
 {
+	buttonState = ButtonStates::BTN_IDLE;
+
 	if (shape.getGlobalBounds().contains(mousePosition))
 	{
+		buttonState = ButtonStates::BTN_HOVER;
 
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			buttonState = ButtonStates::BTN_PRESSED;
+		}
+	}
+
+	switch (buttonState)
+	{
+	case ButtonStates::BTN_IDLE:
+		shape.setFillColor(idleColor);
+		break;
+
+	case ButtonStates::BTN_HOVER:
+		shape.setFillColor(hoverColor);
+		break;
+
+	case ButtonStates::BTN_PRESSED:
+		shape.setFillColor(activeColor);
+		break;
+
+	default:
+		break;
 	}
 }
 
 void Button::render(sf::RenderTarget * target)
 {
 	target->draw(shape);
+	target->draw(text);
+}
+
+const bool Button::isPressed()
+{
+	if (buttonState == ButtonStates::BTN_PRESSED)
+		return true;
+
+	return false;
+}
+
+void Button::initFont()
+{
+	if (!font->loadFromFile("..\Resources\Fonts\Arial.ttf"))
+	{
+		throw("ERROR: COULD NOT LOAD FONT");
+	}
 }

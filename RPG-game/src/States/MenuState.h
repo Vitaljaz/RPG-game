@@ -19,5 +19,7 @@ public:
 private:
 	sf::RectangleShape background;
 	sf::Font font;
+
+	Button *btnGameState;
 };
 
