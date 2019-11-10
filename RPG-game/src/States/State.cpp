@@ -19,6 +19,13 @@ void State::checkEndState()
 	}
 }
 
+void State::updateMousePositions()
+{
+	mousePositionScreen = sf::Mouse::getPosition();
+	mousePositionWindow = sf::Mouse::getPosition(*window);
+	mousePositionView = window->mapPixelToCoords(sf::Mouse::getPosition(*window));
+}
+
 State::~State()
 {
 

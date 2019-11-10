@@ -18,6 +18,7 @@ void MenuState::updateKeybinds(const float dt)
 
 void MenuState::update(const float dt)
 {
+	updateMousePositions();
 	updateKeybinds(dt);
 }
 

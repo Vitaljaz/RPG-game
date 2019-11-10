@@ -32,7 +32,6 @@ void Game::initWindow()
 void Game::initStates()
 {
 	states.push(new MenuState(window));
-	states.push(new GameState(window));
 }
 
 void Game::run()

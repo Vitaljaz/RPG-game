@@ -16,6 +16,7 @@ void GameState::updateKeybinds(const float dt)
 
 void GameState::update(const float dt)
 {
+	updateMousePositions();
 	updateKeybinds(dt);
 	player.update(dt);
 }
