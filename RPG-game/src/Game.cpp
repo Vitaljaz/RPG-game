@@ -19,7 +19,7 @@ Game::~Game()
 
 void Game::closeApplication()
 {
-	std::cout << "Close app" << std::endl;
+	LOG("Close GameState!")
 }
 
 void Game::initWindow()
@@ -31,7 +31,7 @@ void Game::initWindow()
 
 void Game::initStates()
 {
-	states.push(new MenuState(window));
+	states.push(new MenuState(window, &states));
 }
 
 void Game::run()

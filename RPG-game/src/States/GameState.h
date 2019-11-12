@@ -7,7 +7,7 @@
 class GameState : public State
 {
 public:
-	GameState(sf::RenderWindow *window);
+	GameState(sf::RenderWindow *window, std::stack<State*>* states);
 
 	void endState() override;
 	void updateKeybinds(const float dt) override;

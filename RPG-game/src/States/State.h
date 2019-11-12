@@ -10,10 +10,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#define LOG(x) std::cout<< x << std::endl;
+
 class State
 {
 public:
-	State(sf::RenderWindow *window);
+	State(sf::RenderWindow *window, std::stack<State*>* states);
 	
 	const bool& getEnd() const;
 
@@ -28,6 +30,8 @@ public:
 	virtual ~State();
 
 protected:
+	std::stack<State*>* states;
+
 	sf::RenderWindow *window;
 	std::vector<sf::Texture*> textures;
 

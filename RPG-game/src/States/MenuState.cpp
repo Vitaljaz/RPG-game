@@ -1,6 +1,7 @@
 #include "MenuState.h"
 
-MenuState::MenuState(sf::RenderWindow *window) : State(window)
+MenuState::MenuState(sf::RenderWindow *window, std::stack<State*>* states)
+	: State(window, states)
 {
 	background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
 	background.setFillColor(sf::Color::Blue);
@@ -10,7 +11,7 @@ MenuState::MenuState(sf::RenderWindow *window) : State(window)
 
 void MenuState::endState()
 {
-	std::cout << "Menu is finished" << std::endl;
+	LOG("End MainMenu state!")
 }
 
 void MenuState::updateKeybinds(const float dt)
@@ -32,7 +33,7 @@ void MenuState::updateButtons()
 
 	if (buttons[MenuButtons::GAME_STATE]->isPressed())
 	{
-
+		states->push(new GameState(window, states));
 	}
 
 	if (buttons[MenuButtons::EXIT_STATE]->isPressed())

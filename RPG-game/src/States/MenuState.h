@@ -9,7 +9,7 @@ enum class MenuButtons : int {GAME_STATE = 0, EXIT_STATE};
 class MenuState : public State
 {
 public:
-	MenuState(sf::RenderWindow *window);
+	MenuState(sf::RenderWindow *window, std::stack<State*>* states);
 
 	void endState() override;
 
