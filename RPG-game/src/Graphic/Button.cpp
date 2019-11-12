@@ -9,13 +9,13 @@ Button::Button(float x, float y, float w, float h, std::string text)
 	
 	buttonState = ButtonStates::BTN_IDLE;
 
-	this->text.setFont(*this->font);
+	this->text.setFont(this->font);
 	this->text.setString(text);
 	this->text.setFillColor(sf::Color::White);
 	this->text.setCharacterSize(12);
 	this->text.setPosition(
-		shape.getPosition().x / 2.f - this->text.getGlobalBounds().width / 2.f,
-		shape.getPosition().y / 2.f - this->text.getGlobalBounds().height / 2.f
+		shape.getPosition().x + (shape.getGlobalBounds().width / 2.f) - this->text.getGlobalBounds().width / 2.f,
+		shape.getPosition().y + (shape.getGlobalBounds().height / 2.f) - this->text.getGlobalBounds().height / 2.f
 	);
 
 	idleColor = sf::Color::Black;
@@ -79,7 +79,7 @@ const bool Button::isPressed()
 
 void Button::initFont()
 {
-	if (!font->loadFromFile("..\Resources\Fonts\Arial.ttf"))
+	if (!font.loadFromFile("Robot.ttf"))
 	{
 		throw("ERROR: COULD NOT LOAD FONT");
 	}

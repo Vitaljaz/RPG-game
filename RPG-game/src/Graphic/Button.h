@@ -23,7 +23,7 @@ private:
 	ButtonStates buttonState;
 
 	sf::RectangleShape shape;
-	sf::Font *font;
+	sf::Font font;
 	sf::Text text;
 
 	sf::Color idleColor;

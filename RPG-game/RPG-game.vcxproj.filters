@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="src\Resources\Fonts\Arial.ttf" />
+    <Font Include="src\Resources\Fonts\ArialRegular.ttf" />
   </ItemGroup>
 </Project>
