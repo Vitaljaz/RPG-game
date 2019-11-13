@@ -16,6 +16,7 @@ public:
 	void updateSFMLEvents();
 
 private:
+	sf::ContextSettings windowSettings;
 	sf::RenderWindow *window;
 	sf::Event sfEvent;
 	sf::Clock dtClock;

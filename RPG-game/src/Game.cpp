@@ -24,7 +24,8 @@ void Game::closeApplication()
 
 void Game::initWindow()
 {
-	window = new sf::RenderWindow(sf::VideoMode(800, 600), "RPG");
+	windowSettings.antialiasingLevel = 0;
+	window = new sf::RenderWindow(sf::VideoMode(1024, 600), "RPG", sf::Style::Titlebar | sf::Style::Close, windowSettings);
 	window->setFramerateLimit(120);
 	window->setVerticalSyncEnabled(true);
 }
