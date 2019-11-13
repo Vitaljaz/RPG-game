@@ -5,14 +5,10 @@ GameState::GameState(sf::RenderWindow *window, std::stack<State*>* states)
 {
 }
 
-void GameState::endState()
-{
-	std::cout << "Game is finished" << std::endl;
-}
-
 void GameState::updateKeybinds(const float dt)
 {
-	checkEndState();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		endState();
 }
 
 void GameState::update(const float dt)

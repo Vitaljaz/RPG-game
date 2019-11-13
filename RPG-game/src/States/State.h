@@ -18,11 +18,10 @@ public:
 	State(sf::RenderWindow *window, std::stack<State*>* states);
 	
 	const bool& getEnd() const;
+	void endState();
 
-	virtual void checkEndState();
 	virtual void updateMousePositions();
 
-	virtual void endState() = 0;
 	virtual void updateKeybinds(const float dt) = 0;
 	virtual void update(const float dt) = 0;
 	virtual void render(sf::RenderTarget *target = nullptr) = 0;

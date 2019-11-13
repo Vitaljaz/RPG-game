@@ -11,8 +11,6 @@ class MenuState : public State
 public:
 	MenuState(sf::RenderWindow *window, std::stack<State*>* states);
 
-	void endState() override;
-
 	void updateKeybinds(const float dt) override;
 	void update(const float dt) override;
 	void updateButtons();

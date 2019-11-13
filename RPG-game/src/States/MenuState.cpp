@@ -7,14 +7,8 @@ MenuState::MenuState(sf::RenderWindow *window, std::stack<State*>* states)
 	initButtons();
 }
 
-void MenuState::endState()
-{
-	LOG("End MainMenu state!")
-}
-
 void MenuState::updateKeybinds(const float dt)
 {
-	checkEndState();
 }
 
 void MenuState::update(const float dt)
