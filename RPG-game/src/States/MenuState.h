@@ -4,7 +4,7 @@
 
 #include "../Graphic/Button.h"
 
-enum class MenuButtons : int {GAME_STATE = 0, EXIT_STATE};
+enum class MenuButtons : int {GAME_STATE = 0, SETTINGS_STATE, EXIT_STATE};
 
 class MenuState : public State
 {
@@ -23,6 +23,7 @@ public:
 	virtual ~MenuState();
 	
 private:
+	sf::Texture backgroundTexture;
 	sf::RectangleShape background;
 	sf::Font font;
 
@@ -30,6 +31,7 @@ private:
 
 	std::map<MenuButtons, Button*> buttons;
 
+	void initBackground();
 	void initButtons();
 };
 

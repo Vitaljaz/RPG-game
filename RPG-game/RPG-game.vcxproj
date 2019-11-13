@@ -166,6 +166,9 @@
     <Font Include="src\Resources\Fonts\Arial.ttf" />
     <Font Include="src\Resources\Fonts\ArialRegular.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\Resources\images\backgrounds\background1.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

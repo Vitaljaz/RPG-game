@@ -3,9 +3,7 @@
 MenuState::MenuState(sf::RenderWindow *window, std::stack<State*>* states)
 	: State(window, states)
 {
-	background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-	background.setFillColor(sf::Color::Blue);
-
+	initBackground();
 	initButtons();
 }
 
@@ -66,8 +64,21 @@ MenuState::~MenuState()
 		delete it->second;
 }
 
+void MenuState::initBackground()
+{
+	background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
+
+	if (!backgroundTexture.loadFromFile("src/Resources/images/backgrounds/bg1.png"))
+	{
+		throw("ERROR: FAILED TO LOAD MENU BACKGROUND");
+	}
+
+	background.setTexture(&backgroundTexture);
+}
+
 void MenuState::initButtons()
 {
-	buttons[MenuButtons::GAME_STATE] = new Button(100, 100, 150, 50, "START");
-	buttons[MenuButtons::EXIT_STATE] = new Button(100, 200, 150, 50, "EXIT");
+	buttons[MenuButtons::GAME_STATE] = new Button(437, 250, 150, 50, "New Game");
+	buttons[MenuButtons::SETTINGS_STATE] = new Button(437, 350, 150, 50, "Settings");
+	buttons[MenuButtons::EXIT_STATE] = new Button(437, 450, 150, 50, "Quit");
 }

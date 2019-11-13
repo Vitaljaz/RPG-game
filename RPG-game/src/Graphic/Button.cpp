@@ -18,9 +18,9 @@ Button::Button(float x, float y, float w, float h, std::string text)
 		shape.getPosition().y + (shape.getGlobalBounds().height / 2.f) - this->text.getGlobalBounds().height / 2.f
 	);
 
-	idleColor = sf::Color::Black;
-	hoverColor = sf::Color::Green;
-	activeColor = sf::Color::Cyan;
+	idleColor = sf::Color(100, 100, 100, 200);
+	hoverColor = sf::Color(150, 150, 150, 255);
+	activeColor = sf::Color(20, 20, 20, 200);
 
 	shape.setFillColor(idleColor);
 }
@@ -79,7 +79,7 @@ const bool Button::isPressed()
 
 void Button::initFont()
 {
-	if (!font.loadFromFile("Robot.ttf"))
+	if (!font.loadFromFile("src/Resources/fonts/Robot.ttf"))
 	{
 		throw("ERROR: COULD NOT LOAD FONT");
 	}
