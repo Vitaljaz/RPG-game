@@ -16,7 +16,7 @@ Player::~Player()
 
 void Player::initComponets()
 {
-	createMovementController(100.f);
+	createMovementController(300.f, 15.f, 5.f);
 }
 
 void Player::initVariables()

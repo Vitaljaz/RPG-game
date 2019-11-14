@@ -6,7 +6,7 @@
 class MovementController
 {
 public:
-	MovementController(sf::Sprite& sprite, float maxVelocity);
+	MovementController(sf::Sprite& sprite, float maxVelocity, float acceleration, float deceleration);
 	virtual ~MovementController();
 	
 	void move(const float dir_x, const float dir_y, const float dt);
@@ -16,11 +16,10 @@ public:
 	
 private:
 	float maxVelocity;
-	
+	float acceleration;
+	float deceleration;
+
 	sf::Vector2f velocity;
-	sf::Vector2f acceleration;
-	sf::Vector2f deceleration;
-	
 	sf::Sprite& sprite;
 };
 

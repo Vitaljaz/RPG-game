@@ -1,7 +1,8 @@
 #include "MovementController.h"
 
-MovementController::MovementController(sf::Sprite& sprite, float maxVelocity) :
-	sprite(sprite), maxVelocity(maxVelocity) {}
+MovementController::MovementController(sf::Sprite& sprite, float maxVelocity,
+	float acceleration, float deceleration) :
+	sprite(sprite), maxVelocity(maxVelocity), acceleration(acceleration), deceleration(deceleration) {}
 
 
 MovementController::~MovementController()
@@ -10,15 +11,52 @@ MovementController::~MovementController()
 
 void MovementController::move(const float dir_x, const float dir_y, const float dt)
 {
-	velocity.x = maxVelocity * dir_x;
-	velocity.y = maxVelocity * dir_y;
+	velocity.x += acceleration * dir_x;
 
-	sprite.move(velocity * dt);
+	velocity.y += acceleration * dir_y;
 }
 
 void MovementController::update(const float dt)
 {
+	if (velocity.x > 0.f)
+	{
+		if (velocity.x > maxVelocity)
+			velocity.x = maxVelocity;
 
+		velocity.x -= deceleration;
+		if (velocity.x < 0.f)
+			velocity.x = 0.f;
+	}
+	else if (velocity.x < 0.f)
+	{
+		if (velocity.x < -maxVelocity)
+			velocity.x = -maxVelocity;
+
+		velocity.x += deceleration;
+		if (velocity.x > 0.f)
+			velocity.x = 0.f;
+	}
+
+	if (velocity.y > 0.f)
+	{
+		if (velocity.y > maxVelocity)
+			velocity.y = maxVelocity;
+
+		velocity.y -= deceleration;
+		if (velocity.y < 0.f)
+			velocity.y = 0.f;
+	}
+	else if (velocity.y < 0.f)
+	{
+		if (velocity.y < -maxVelocity)
+			velocity.y = -maxVelocity;
+
+		velocity.y += deceleration;
+		if (velocity.y > 0.f)
+			velocity.y = 0.f;
+	}
+
+	sprite.move(velocity * dt);
 }
 
 const sf::Vector2f & MovementController::getVelocity() const
