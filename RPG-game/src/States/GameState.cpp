@@ -33,7 +33,7 @@ GameState::~GameState()
 
 void GameState::initPlayer()
 {
-	player = new Player(0, 0, &textures["P_I"]);
+	player = new Player(0, 0, textures["P_I"]);
 }
 
 void GameState::initTextures()

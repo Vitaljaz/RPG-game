@@ -2,32 +2,35 @@
 
 Entity::Entity()
 {
-	sprite = nullptr;
-	texture = nullptr;
-	movementSpeed = 100.f;
+	movementController = nullptr;
 }
 
 Entity::~Entity()
 {
-	delete sprite;
 }
 
-void Entity::createSprite(sf::Texture * texture)
+void Entity::setTexture(sf::Texture & texture)
 {
-	this->texture = texture;
-	this->sprite = new sf::Sprite(*this->texture);
+	this->sprite.setTexture(texture);
+}
+
+void Entity::createMovementController(const float maxVelocity)
+{
+	movementController = new MovementController(sprite, maxVelocity);
 }
 
 void Entity::setPosition(const float x, const float y)
 {
-	if (sprite)
-		sprite->setPosition(x, y);
+	sprite.setPosition(x, y);
 }
 
 void Entity::move(const float dt, const float x, const float y)
 {
-	if (sprite)
-		sprite->move(x * movementSpeed * dt, y * movementSpeed * dt); 
+	if (movementController)
+	{
+		movementController->move(x, y, dt);
+	}
+		
 }
 
 void Entity::update(const float dt)
@@ -44,6 +47,5 @@ void Entity::update(const float dt)
 
 void Entity::render(sf::RenderTarget * target)
 {
-	if (sprite)
-		target->draw(*this->sprite);
+	target->draw(this->sprite);
 }

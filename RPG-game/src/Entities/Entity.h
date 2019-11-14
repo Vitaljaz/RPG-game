@@ -1,7 +1,5 @@
 #pragma once
-#include "SFML/Graphics.hpp"
-#include "SFML/System.hpp"
-#include "SFML/Window.hpp"
+#include "../Controllers/MovementController.h"
 
 class Entity
 {
@@ -9,7 +7,8 @@ public:
 	Entity();
 	virtual ~Entity();
 
-	void createSprite(sf::Texture* texture);
+	void setTexture(sf::Texture& texture);
+	void createMovementController(const float maxVelocity);
 
 	virtual void setPosition(const float x, const float y);
 	virtual void move(const float dt, const float x, const float y);
@@ -17,9 +16,8 @@ public:
 	virtual void render(sf::RenderTarget *target = nullptr);
 
 protected:
-	sf::Texture* texture;
-	sf::Sprite* sprite;
+	sf::Sprite sprite;
 
-	float movementSpeed;
+	MovementController* movementController;
 };
 
