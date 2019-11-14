@@ -2,7 +2,7 @@
 
 #include "State.h"
 
-#include "../Entities/Entity.h"
+#include "../Entities/Player.h"
 
 class GameState : public State
 {
@@ -16,6 +16,9 @@ public:
 	virtual ~GameState();
 
 private:
-	Entity player;
+	Player* player;
+
+	void initPlayer();
+	void initTextures();
 };
 

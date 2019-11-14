@@ -36,6 +36,9 @@
     <ClCompile Include="src\Graphic\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Entities\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -56,6 +59,9 @@
     <ClInclude Include="src\Graphic\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Entities\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="src\Resources\Fonts\Arial.ttf" />
@@ -63,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="src\Resources\images\backgrounds\background1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="src\Resources\images\sprites\Player\player_idle.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

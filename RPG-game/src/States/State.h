@@ -32,7 +32,7 @@ protected:
 	std::stack<State*>* states;
 
 	sf::RenderWindow *window;
-	std::vector<sf::Texture*> textures;
+	std::map<std::string, sf::Texture> textures;
 
 	sf::Vector2i mousePositionScreen;
 	sf::Vector2i mousePositionWindow;
