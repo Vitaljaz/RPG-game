@@ -1,5 +1,6 @@
 #pragma once
 #include "../Controllers/MovementController.h"
+#include "../Controllers/AnimationController.h"
 
 class Entity
 {
@@ -9,6 +10,7 @@ public:
 
 	void setTexture(sf::Texture& texture);
 	void createMovementController(const float maxVelocity, const float acceleration, const float deceleration);
+	void createAnimationController(sf::Sprite& sprite, sf::Texture& textureSheet);
 
 	virtual void setPosition(const float x, const float y);
 	virtual void move(const float x, const float y, const float dt);
@@ -19,5 +21,6 @@ protected:
 	sf::Sprite sprite;
 
 	MovementController* movementController;
+	AnimationController* animationController;
 };
 

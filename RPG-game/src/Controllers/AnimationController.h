@@ -14,7 +14,10 @@ public:
 
 	virtual ~AnimationController();
 
-	void addAnimation(const std::string& key);
+	void addAnimation(const std::string& key, float animationTimer, int start_frame_x, 
+		int start_frame_y, int frame_x, int frame_y,  int width, int height);
+
+	void play(const std::string& key, const float dt);
 
 	void startAnimation(const std::string& animation);
 	void pauseAnimation(const std::string& animation);
@@ -38,18 +41,20 @@ private:
 		sf::IntRect currentRect;
 		sf::IntRect endRect;
 
-		Animation(sf::Sprite& sprite, sf::Texture& textureSheet, float animationTimer, int start_x, int start_y, int end_x, int end_y, int width, int height)
+		Animation(sf::Sprite& sprite, sf::Texture& textureSheet, 
+			float animationTimer, int start_frame_x, int start_frame_y, int frame_x, int frame_y,
+			int width, int height)
 			: sprite(sprite), textureSheet(textureSheet), animationTimer(animationTimer), width(width), height(height)
 		{
-			startRect = sf::IntRect(start_x, start_y, width, height);
+			startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
 			currentRect = startRect;
-			endRect = sf::IntRect(end_x, end_y, width, height);
+			endRect = sf::IntRect(frame_x * width, frame_y * height, width, height);
 
 			sprite.setTexture(textureSheet, true);
 			sprite.setTextureRect(startRect);
 		}
 		
-		void update(const float dt)
+		void play(const float dt)
 		{
 			timer = 10.f * dt;
 			if (timer >= animationTimer)
@@ -63,18 +68,22 @@ private:
 				{
 					currentRect.left = startRect.left;
 				}
+
+				sprite.setTextureRect(currentRect);
 			}
 
 		}
 
-		void play();
-		void pause();
-		void reset();
+		void reset()
+		{
+			currentRect = startRect;
+			timer = 0.f;
+		}
 	};
 
 	sf::Sprite& sprite;
 	sf::Texture& textureSheet;
 
-	std::map<std::string, Animation> animations;
+	std::map<std::string, Animation*> animations;
 };
 
