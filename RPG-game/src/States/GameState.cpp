@@ -42,10 +42,10 @@ GameState::~GameState()
 
 void GameState::initPlayer()
 {
-	player = new Player(0, 0, textures["P_I"]);
+	player = new Player(0, 0, textures["PLAYER_SHEET"]);
 }
 
 void GameState::initTextures()
 {
-	textures["P_I"].loadFromFile("src/Resources/images/sprites/Player/player_idle.png");
+	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/idle_anim.png");
 }

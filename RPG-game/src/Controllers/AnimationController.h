@@ -19,12 +19,6 @@ public:
 
 	void play(const std::string& key, const float dt);
 
-	void startAnimation(const std::string& animation);
-	void pauseAnimation(const std::string& animation);
-	void resetAnimation(const std::string& animation);
-
-	void update();
-
 private:
 	class Animation {
 	public:
@@ -46,6 +40,7 @@ private:
 			int width, int height)
 			: sprite(sprite), textureSheet(textureSheet), animationTimer(animationTimer), width(width), height(height)
 		{
+			timer = 0.f;
 			startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
 			currentRect = startRect;
 			endRect = sf::IntRect(frame_x * width, frame_y * height, width, height);
@@ -56,7 +51,7 @@ private:
 		
 		void play(const float dt)
 		{
-			timer = 10.f * dt;
+			timer += 300.f * dt;
 			if (timer >= animationTimer)
 			{
 				timer = 0.f;

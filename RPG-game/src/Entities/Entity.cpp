@@ -21,7 +21,7 @@ void Entity::createMovementController(const float maxVelocity, const float accel
 	movementController = new MovementController(sprite, maxVelocity, acceleration, deceleration);
 }
 
-void Entity::createAnimationController(sf::Sprite & sprite, sf::Texture & textureSheet)
+void Entity::createAnimationController(sf::Texture & textureSheet)
 {
 	animationController = new AnimationController(sprite, textureSheet);
 }
@@ -42,8 +42,6 @@ void Entity::move(const float x, const float y, const float dt)
 
 void Entity::update(const float dt)
 {
-	if (movementController)
-		movementController->update(dt);
 }
 
 void Entity::render(sf::RenderTarget * target)

@@ -1,7 +1,15 @@
 c:\github\rpg-game\bin\intermediates\win32\debug\vc141.pdb
 c:\github\rpg-game\bin\intermediates\win32\debug\vc141.idb
+c:\github\rpg-game\bin\intermediates\win32\debug\state.obj
 c:\github\rpg-game\bin\intermediates\win32\debug\main.obj
 c:\github\rpg-game\bin\intermediates\win32\debug\game.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\gamestate.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\entity.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\menustate.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\button.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\player.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\movementcontroller.obj
+c:\github\rpg-game\bin\intermediates\win32\debug\animationcontroller.obj
 c:\github\rpg-game\bin\win32\debug\rpg-game.exe
 c:\github\rpg-game\bin\win32\debug\rpg-game.ilk
 c:\github\rpg-game\bin\win32\debug\rpg-game.pdb
