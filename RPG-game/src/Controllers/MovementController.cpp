@@ -85,7 +85,7 @@ const bool MovementController::movingLeft() const
 
 const bool MovementController::moving() const
 {
-	if (velocity.x != 0.f && velocity.y != 0.f)
+	if (velocity.x != 0.f || velocity.y != 0.f)
 		return true;
 
 	return false;
