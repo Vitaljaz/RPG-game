@@ -12,6 +12,8 @@ public:
 	void move(const float dir_x, const float dir_y, const float dt);
 	void update(const float dt);
 
+	const bool idle() const;
+
 	const sf::Vector2f& getVelocity() const;
 	
 private:

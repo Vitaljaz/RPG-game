@@ -9,7 +9,8 @@ Player::Player(float x, float y, sf::Texture& textureSheet)
 	createMovementController(300.f, 15.f, 5.f);
 	createAnimationController(textureSheet);
 
-	animationController->addAnimation("IDLE_LEFT", 100.f, 0, 0, 5, 0, 100, 96);
+	animationController->addAnimation("IDLE_LEFT", 70.f, 0, 0, 5, 0, 100, 96);
+	animationController->addAnimation("WALK_LEFT", 20.f, 0, 1, 10, 1, 100, 96);
 }
 
 
@@ -20,7 +21,12 @@ Player::~Player()
 void Player::update(const float dt)
 {
 	movementController->update(dt);
-	animationController->play("IDLE_LEFT", dt);
+
+	if (movementController->idle())
+		animationController->play("IDLE_LEFT", dt);
+	else
+		animationController->play("WALK_LEFT", dt);
+	
 }
 
 void Player::initComponets()

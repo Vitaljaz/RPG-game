@@ -47,5 +47,5 @@ void GameState::initPlayer()
 
 void GameState::initTextures()
 {
-	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/idle_anim.png");
+	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/player_sheet.png");
 }

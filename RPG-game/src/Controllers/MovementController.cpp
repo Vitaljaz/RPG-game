@@ -59,6 +59,14 @@ void MovementController::update(const float dt)
 	sprite.move(velocity * dt);
 }
 
+const bool MovementController::idle() const
+{
+	if (velocity.x == 0.f && velocity.y == 0.f)
+		return true;
+
+	return false;
+}
+
 const sf::Vector2f & MovementController::getVelocity() const
 {
 	return velocity;

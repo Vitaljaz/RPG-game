@@ -21,6 +21,5 @@ void AnimationController::addAnimation(const std::string & key,	float animationT
 
 void AnimationController::play(const std::string & key, const float dt)
 {
-	std::cout << "play call\n";
 	animations[key]->play(dt);
 }
