@@ -1,7 +1,7 @@
 #include "AnimationController.h"
 
 AnimationController::AnimationController(sf::Sprite& sprite, sf::Texture& textureSheet) 
-	: sprite(sprite), textureSheet(textureSheet) {}
+	: sprite(sprite), textureSheet(textureSheet), lastAnimation(nullptr) {}
 
 
 AnimationController::~AnimationController()
@@ -21,5 +21,16 @@ void AnimationController::addAnimation(const std::string & key,	float animationT
 
 void AnimationController::play(const std::string & key, const float dt)
 {
+	if (lastAnimation != animations[key])
+	{
+		if (lastAnimation == nullptr)
+			lastAnimation = animations[key];
+		else
+		{
+			lastAnimation->reset();
+			lastAnimation = animations[key];
+		}
+	}
+
 	animations[key]->play(dt);
 }

@@ -79,6 +79,8 @@ private:
 	sf::Sprite& sprite;
 	sf::Texture& textureSheet;
 
+	Animation* lastAnimation;
+
 	std::map<std::string, Animation*> animations;
 };
 
