@@ -67,6 +67,30 @@ const bool MovementController::idle() const
 	return false;
 }
 
+const bool MovementController::movingRight() const
+{
+	if (velocity.x > 0.f)
+		return true;
+
+	return false;
+}
+
+const bool MovementController::movingLeft() const
+{
+	if (velocity.x < 0.f)
+		return true;
+
+	return false;
+}
+
+const bool MovementController::moving() const
+{
+	if (velocity.x != 0.f && velocity.y != 0.f)
+		return true;
+
+	return false;
+}
+
 const sf::Vector2f & MovementController::getVelocity() const
 {
 	return velocity;

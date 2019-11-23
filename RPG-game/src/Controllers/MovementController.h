@@ -13,6 +13,9 @@ public:
 	void update(const float dt);
 
 	const bool idle() const;
+	const bool movingRight() const;
+	const bool movingLeft() const;
+	const bool moving() const;
 
 	const sf::Vector2f& getVelocity() const;
 	

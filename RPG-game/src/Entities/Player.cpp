@@ -24,8 +24,9 @@ void Player::update(const float dt)
 
 	if (movementController->idle())
 		animationController->play("IDLE_LEFT", dt);
-	else
+	else if (movementController->movingLeft())
 		animationController->play("WALK_LEFT", dt);
+
 	
 }
 
