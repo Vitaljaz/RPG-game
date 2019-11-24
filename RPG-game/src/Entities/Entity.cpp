@@ -19,6 +19,11 @@ void Entity::setTexture(sf::Texture & texture)
 	this->sprite.setTexture(texture);
 }
 
+void Entity::createHitboxController(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height)
+{
+	hitboxController = new HitboxController(sprite, offset_x, offset_y, width, height);
+}
+
 void Entity::createMovementController(const float maxVelocity, const float acceleration, const float deceleration)
 {
 	movementController = new MovementController(sprite, maxVelocity, acceleration, deceleration);
@@ -50,4 +55,7 @@ void Entity::update(const float dt)
 void Entity::render(sf::RenderTarget * target)
 {
 	target->draw(this->sprite);
+
+	if (hitboxController)
+		hitboxController->render(target);
 }

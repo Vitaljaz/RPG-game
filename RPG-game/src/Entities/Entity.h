@@ -10,6 +10,7 @@ public:
 	virtual ~Entity();
 
 	void setTexture(sf::Texture& texture);
+	void createHitboxController(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height);
 	void createMovementController(const float maxVelocity, const float acceleration, const float deceleration);
 	void createAnimationController(sf::Texture& textureSheet);
 

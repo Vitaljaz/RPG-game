@@ -25,7 +25,7 @@ void HitboxController::update()
 	hitbox.setPosition(sprite.getPosition().x + offsetX, sprite.getPosition().y + offsetY);
 }
 
-void HitboxController::render(sf::RenderTarget & target)
+void HitboxController::render(sf::RenderTarget * target)
 {
-	target.draw(hitbox);
+	target->draw(hitbox);
 }
