@@ -1,6 +1,7 @@
 #pragma once
 #include "../Controllers/MovementController.h"
 #include "../Controllers/AnimationController.h"
+#include "../Controllers/HitboxController.h"
 
 class Entity
 {
@@ -20,6 +21,7 @@ public:
 protected:
 	sf::Sprite sprite;
 
+	HitboxController* hitboxController;
 	MovementController* movementController;
 	AnimationController* animationController;
 };

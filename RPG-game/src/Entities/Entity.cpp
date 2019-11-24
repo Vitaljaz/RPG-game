@@ -3,12 +3,15 @@
 Entity::Entity()
 {
 	movementController = nullptr;
+	animationController = nullptr;
+	hitboxController = nullptr;
 }
 
 Entity::~Entity()
 {
 	delete movementController;
 	delete animationController;
+	delete hitboxController;
 }
 
 void Entity::setTexture(sf::Texture & texture)
