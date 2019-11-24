@@ -6,6 +6,7 @@ Player::Player(float x, float y, sf::Texture& textureSheet)
 
 	setPosition(x, y);
 
+	createHitboxController(sprite, 18.f, 15.f, 50.f, 60.f);
 	createMovementController(300.f, 15.f, 5.f);
 	createAnimationController(textureSheet);
 
@@ -40,9 +41,8 @@ void Player::update(const float dt)
 	{
 		animationController->play("WALK", dt);
 	}
-		
-
 	
+	hitboxController->update();
 }
 
 void Player::initComponets()
