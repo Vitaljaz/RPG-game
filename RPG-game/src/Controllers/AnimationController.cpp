@@ -34,3 +34,19 @@ void AnimationController::play(const std::string & key, const float dt)
 
 	animations[key]->play(dt);
 }
+
+void AnimationController::play(const std::string & key, const float dt, const float modifer, const float modifer_max)
+{
+	if (lastAnimation != animations[key])
+	{
+		if (lastAnimation == nullptr)
+			lastAnimation = animations[key];
+		else
+		{
+			lastAnimation->reset();
+			lastAnimation = animations[key];
+		}
+	}
+
+	animations[key]->play(dt);
+}

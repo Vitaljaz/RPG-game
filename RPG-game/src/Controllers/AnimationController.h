@@ -18,6 +18,8 @@ public:
 		int start_frame_y, int frame_x, int frame_y,  int width, int height);
 
 	void play(const std::string& key, const float dt);
+	void play(const std::string& key, const float dt, const float modifer, const float modifer_max);
+
 
 private:
 	class Animation {
@@ -52,6 +54,26 @@ private:
 		void play(const float dt)
 		{
 			timer += 300.f * dt;
+			if (timer >= animationTimer)
+			{
+				timer = 0.f;
+				if (currentRect != endRect)
+				{
+					currentRect.left += width;
+				}
+				else
+				{
+					currentRect.left = startRect.left;
+				}
+
+				sprite.setTextureRect(currentRect);
+			}
+
+		}
+
+		void play(const float dt, const float modifier, const float modifier_max)
+		{
+			timer += (modifier / modifier_max) * 300.f * dt;
 			if (timer >= animationTimer)
 			{
 				timer = 0.f;
