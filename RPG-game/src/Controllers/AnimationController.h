@@ -17,8 +17,8 @@ public:
 	void addAnimation(const std::string& key, float animationTimer, int start_frame_x, 
 		int start_frame_y, int frame_x, int frame_y,  int width, int height);
 
-	void play(const std::string& key, const float dt);
-	void play(const std::string& key, const float dt, const float modifer, const float modifer_max);
+	void play(const std::string& key, const float dt, const bool priority = false);
+	void play(const std::string& key, const float dt, const float modifier, const float modifier_max, const bool priority = false);
 
 
 private:
@@ -71,9 +71,12 @@ private:
 
 		}
 
-		void play(const float dt, const float modifier, const float modifier_max)
+		void play(const float dt, float mod_p)
 		{
-			timer += (modifier / modifier_max) * 300.f * dt;
+			if (mod_p < 0.5f)
+				mod_p = 0.5f;
+
+			timer += mod_p * 300.f * dt;
 			if (timer >= animationTimer)
 			{
 				timer = 0.f;
@@ -94,7 +97,7 @@ private:
 		void reset()
 		{
 			currentRect = startRect;
-			timer = 0.f;
+			timer = animationTimer;
 		}
 	};
 
@@ -102,6 +105,7 @@ private:
 	sf::Texture& textureSheet;
 
 	Animation* lastAnimation;
+	Animation* priorityAnimation;
 
 	std::map<std::string, Animation*> animations;
 };

@@ -1,7 +1,7 @@
 #include "AnimationController.h"
 
 AnimationController::AnimationController(sf::Sprite& sprite, sf::Texture& textureSheet) 
-	: sprite(sprite), textureSheet(textureSheet), lastAnimation(nullptr) {}
+	: sprite(sprite), textureSheet(textureSheet), lastAnimation(nullptr), priorityAnimation(nullptr) {}
 
 
 AnimationController::~AnimationController()
@@ -19,7 +19,7 @@ void AnimationController::addAnimation(const std::string & key,	float animationT
 		start_frame_x, start_frame_y, frame_x, frame_y, width, height);
 }
 
-void AnimationController::play(const std::string & key, const float dt)
+void AnimationController::play(const std::string & key, const float dt, const bool priority = false)
 {
 	if (lastAnimation != animations[key])
 	{
@@ -35,7 +35,7 @@ void AnimationController::play(const std::string & key, const float dt)
 	animations[key]->play(dt);
 }
 
-void AnimationController::play(const std::string & key, const float dt, const float modifer, const float modifer_max)
+void AnimationController::play(const std::string & key, const float dt, const float modifier, const float modifier_max, const bool priority = false)
 {
 	if (lastAnimation != animations[key])
 	{
@@ -48,5 +48,5 @@ void AnimationController::play(const std::string & key, const float dt, const fl
 		}
 	}
 
-	animations[key]->play(dt);
+	animations[key]->play(dt, abs(modifier / modifier_max));
 }
