@@ -17,6 +17,7 @@ public:
 	const bool movingLeft() const;
 	const bool moving() const;
 
+	const float getMaxVelocity() const;
 	const sf::Vector2f& getVelocity() const;
 	
 private:

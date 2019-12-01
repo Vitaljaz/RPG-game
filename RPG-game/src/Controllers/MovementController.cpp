@@ -91,6 +91,11 @@ const bool MovementController::moving() const
 	return false;
 }
 
+const float MovementController::getMaxVelocity() const
+{
+	return maxVelocity;
+}
+
 const sf::Vector2f & MovementController::getVelocity() const
 {
 	return velocity;
