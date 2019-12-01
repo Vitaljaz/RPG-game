@@ -47,5 +47,5 @@ void GameState::initPlayer()
 
 void GameState::initTextures()
 {
-	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/player_sheet.png");
+	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/player_sheet_2.png");
 }
