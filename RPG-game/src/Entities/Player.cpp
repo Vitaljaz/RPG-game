@@ -24,6 +24,16 @@ void Player::update(const float dt)
 {
 	movementController->update(dt);
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		attacking = true;
+	}
+
+	if (attacking)
+	{
+		animationController->play("ATTACK", dt, true);
+	}
+
 	if (movementController->idle())
 		animationController->play("IDLE", dt, movementController->getVelocity().x, movementController->getMaxVelocity());
 	else if (movementController->movingLeft())
@@ -52,4 +62,5 @@ void Player::initComponets()
 
 void Player::initVariables()
 {
+	attacking = false;
 }

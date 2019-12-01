@@ -51,8 +51,9 @@ private:
 			sprite.setTextureRect(startRect);
 		}
 		
-		void play(const float dt)
+		bool play(const float dt)
 		{
+			bool done = false;
 			timer += 300.f * dt;
 			if (timer >= animationTimer)
 			{
@@ -64,18 +65,20 @@ private:
 				else
 				{
 					currentRect.left = startRect.left;
+					done = true;
 				}
 
 				sprite.setTextureRect(currentRect);
 			}
-
+			return done;
 		}
 
-		void play(const float dt, float mod_p)
+		bool play(const float dt, float mod_p)
 		{
 			if (mod_p < 0.5f)
 				mod_p = 0.5f;
 
+			bool done = false;
 			timer += mod_p * 300.f * dt;
 			if (timer >= animationTimer)
 			{
@@ -87,11 +90,13 @@ private:
 				else
 				{
 					currentRect.left = startRect.left;
+					done = true;
 				}
 
 				sprite.setTextureRect(currentRect);
 			}
-
+			
+			return done;
 		}
 
 		void reset()

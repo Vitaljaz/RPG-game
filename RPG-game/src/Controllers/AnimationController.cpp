@@ -19,34 +19,85 @@ void AnimationController::addAnimation(const std::string & key,	float animationT
 		start_frame_x, start_frame_y, frame_x, frame_y, width, height);
 }
 
-void AnimationController::play(const std::string & key, const float dt, const bool priority = false)
+void AnimationController::play(const std::string & key, const float dt, const bool priority)
 {
-	if (lastAnimation != animations[key])
+	if (priority)
+		priorityAnimation = animations[key];
+
+	if (priorityAnimation)
 	{
-		if (lastAnimation == nullptr)
-			lastAnimation = animations[key];
-		else
+		if (priorityAnimation == animations[key])
 		{
-			lastAnimation->reset();
-			lastAnimation = animations[key];
+			if (lastAnimation != animations[key])
+			{
+				if (lastAnimation == nullptr)
+					lastAnimation = animations[key];
+				else
+				{
+					lastAnimation->reset();
+					lastAnimation = animations[key];
+				}
+			}
+
+			if (animations[key]->play(dt))
+			{
+				priorityAnimation = nullptr;
+			}
 		}
 	}
-
-	animations[key]->play(dt);
+	else
+	{
+		if (lastAnimation != animations[key])
+		{
+			if (lastAnimation == nullptr)
+				lastAnimation = animations[key];
+			else
+			{
+				lastAnimation->reset();
+				lastAnimation = animations[key];
+			}
+		}
+		animations[key]->play(dt);
+	}
 }
 
-void AnimationController::play(const std::string & key, const float dt, const float modifier, const float modifier_max, const bool priority = false)
+void AnimationController::play(const std::string & key, const float dt, const float modifier, const float modifier_max, const bool priority)
 {
-	if (lastAnimation != animations[key])
+	if (priority)
+		priorityAnimation = animations[key];
+
+	if (priorityAnimation)
 	{
-		if (lastAnimation == nullptr)
-			lastAnimation = animations[key];
-		else
+		if (priorityAnimation == animations[key])
 		{
-			lastAnimation->reset();
-			lastAnimation = animations[key];
+			if (lastAnimation != animations[key])
+			{
+				if (lastAnimation == nullptr)
+					lastAnimation = animations[key];
+				else
+				{
+					lastAnimation->reset();
+					lastAnimation = animations[key];
+				}
+			}
+			if (animations[key]->play(dt))
+			{
+				priorityAnimation = nullptr;
+			}
 		}
 	}
-
-	animations[key]->play(dt, abs(modifier / modifier_max));
+	else
+	{
+		if (lastAnimation != animations[key])
+		{
+			if (lastAnimation == nullptr)
+				lastAnimation = animations[key];
+			else
+			{
+				lastAnimation->reset();
+				lastAnimation = animations[key];
+			}
+		}
+		animations[key]->play(dt, abs(modifier / modifier_max));
+	}
 }
