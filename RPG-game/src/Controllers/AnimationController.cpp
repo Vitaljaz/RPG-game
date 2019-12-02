@@ -19,7 +19,7 @@ void AnimationController::addAnimation(const std::string & key,	float animationT
 		start_frame_x, start_frame_y, frame_x, frame_y, width, height);
 }
 
-void AnimationController::play(const std::string & key, const float dt, const bool priority)
+const bool& AnimationController::play(const std::string & key, const float dt, const bool priority)
 {
 	if (priority)
 		priorityAnimation = animations[key];
@@ -59,9 +59,11 @@ void AnimationController::play(const std::string & key, const float dt, const bo
 		}
 		animations[key]->play(dt);
 	}
+
+	return animations[key]->isDone();
 }
 
-void AnimationController::play(const std::string & key, const float dt, const float modifier, const float modifier_max, const bool priority)
+const bool& AnimationController::play(const std::string & key, const float dt, const float modifier, const float modifier_max, const bool priority)
 {
 	if (priority)
 		priorityAnimation = animations[key];
@@ -100,4 +102,11 @@ void AnimationController::play(const std::string & key, const float dt, const fl
 		}
 		animations[key]->play(dt, abs(modifier / modifier_max));
 	}
+
+	return animations[key]->isDone();
+}
+
+const bool & AnimationController::isDone(const std::string & key)
+{
+	return animations[key]->isDone();
 }

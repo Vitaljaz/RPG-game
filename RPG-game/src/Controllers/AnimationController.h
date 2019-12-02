@@ -17,9 +17,10 @@ public:
 	void addAnimation(const std::string& key, float animationTimer, int start_frame_x, 
 		int start_frame_y, int frame_x, int frame_y,  int width, int height);
 
-	void play(const std::string& key, const float dt, const bool priority = false);
-	void play(const std::string& key, const float dt, const float modifier, const float modifier_max, const bool priority = false);
+	const bool& play(const std::string& key, const float dt, const bool priority = false);
+	const bool& play(const std::string& key, const float dt, const float modifier, const float modifier_max, const bool priority = false);
 
+	const bool& isDone(const std::string& key);
 
 private:
 	class Animation {
@@ -33,6 +34,8 @@ private:
 		float animationTimer;
 		float timer;
 
+		bool done;
+
 		sf::IntRect startRect;
 		sf::IntRect currentRect;
 		sf::IntRect endRect;
@@ -42,6 +45,7 @@ private:
 			int width, int height)
 			: sprite(sprite), textureSheet(textureSheet), animationTimer(animationTimer), width(width), height(height)
 		{
+			done = false;
 			timer = 0.f;
 			startRect = sf::IntRect(start_frame_x * width, start_frame_y * height, width, height);
 			currentRect = startRect;
@@ -51,9 +55,9 @@ private:
 			sprite.setTextureRect(startRect);
 		}
 		
-		bool play(const float dt)
+		const bool& play(const float dt)
 		{
-			bool done = false;
+			done = false;
 			timer += 300.f * dt;
 			if (timer >= animationTimer)
 			{
@@ -73,12 +77,12 @@ private:
 			return done;
 		}
 
-		bool play(const float dt, float mod_p)
+		const bool& play(const float dt, float mod_p)
 		{
 			if (mod_p < 0.5f)
 				mod_p = 0.5f;
 
-			bool done = false;
+			done = false;
 			timer += mod_p * 300.f * dt;
 			if (timer >= animationTimer)
 			{
@@ -103,6 +107,11 @@ private:
 		{
 			currentRect = startRect;
 			timer = animationTimer;
+		}
+
+		const bool& isDone() const
+		{
+			return done;
 		}
 	};
 
