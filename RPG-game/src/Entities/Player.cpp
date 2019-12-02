@@ -31,7 +31,8 @@ void Player::update(const float dt)
 
 	if (attacking)
 	{
-		animationController->play("ATTACK", dt, true);
+		if (animationController->play("ATTACK", dt, true))
+			attacking = false;
 	}
 
 	if (movementController->idle())
