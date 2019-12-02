@@ -1,14 +1,4 @@
 #pragma once
-#include <iostream>
-#include <ctime>
-#include <cstdio>
-#include <vector>
-#include <stack>
-#include <map>
-
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
 
 #define LOG(x) std::cout<< x << std::endl;
 
