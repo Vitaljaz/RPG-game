@@ -1,3 +1,4 @@
+#include "../stdafx.h"
 #include "Player.h"
 
 Player::Player(float x, float y, sf::Texture& textureSheet)
@@ -14,7 +15,6 @@ Player::Player(float x, float y, sf::Texture& textureSheet)
 	animationController->addAnimation("WALK", 20.f, 0, 1, 10, 1, 128, 96);
 	animationController->addAnimation("ATTACK", 20.f, 0, 2, 8, 2, 128, 96);
 }
-
 
 Player::~Player()
 {

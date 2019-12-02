@@ -1,3 +1,4 @@
+#include "../stdafx.h"
 #include "MovementController.h"
 
 MovementController::MovementController(sf::Sprite& sprite, float maxVelocity,

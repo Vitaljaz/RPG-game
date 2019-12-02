@@ -1,3 +1,4 @@
+#include "../stdafx.h"
 #include "GameState.h"
 
 GameState::GameState(sf::RenderWindow *window, std::stack<State*>* states)
