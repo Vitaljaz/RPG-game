@@ -9,9 +9,13 @@ public:
 
 	virtual void update(const float dt) override;
 
+	void setAttack();
+
 private:
 	void initComponets();
 	void initVariables();
+
+	void updateAnimations(const float dt);
 
 	bool attacking;
 };

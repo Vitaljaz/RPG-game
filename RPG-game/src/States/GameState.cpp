@@ -12,7 +12,9 @@ void GameState::updateKeybinds(const float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		endState();
 
-	// add attack
+	// player actions
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		player->setAttack();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		player->move(0.f, -1.f, dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))

@@ -23,12 +23,26 @@ Player::~Player()
 void Player::update(const float dt)
 {
 	movementController->update(dt);
+	updateAnimations(dt);
+	hitboxController->update();
+}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-	{
-		attacking = true;
-	}
+void Player::setAttack()
+{
+	attacking = true;
+}
 
+void Player::initComponets()
+{
+}
+
+void Player::initVariables()
+{
+	attacking = false;
+}
+
+void Player::updateAnimations(const float dt)
+{
 	if (attacking)
 	{
 		if (animationController->play("ATTACK", dt, true))
@@ -53,15 +67,4 @@ void Player::update(const float dt)
 	{
 		animationController->play("WALK", dt, movementController->getVelocity().y, movementController->getMaxVelocity());
 	}
-	
-	hitboxController->update();
-}
-
-void Player::initComponets()
-{
-}
-
-void Player::initVariables()
-{
-	attacking = false;
 }
