@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "Player.h"
 
 Player::Player(float x, float y, sf::Texture& textureSheet)

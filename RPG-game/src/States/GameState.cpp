@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "GameState.h"
 
 GameState::GameState(sf::RenderWindow *window, std::stack<State*>* states)
@@ -31,25 +31,30 @@ void GameState::update(const float dt)
 	updateMousePositions();
 	updateKeybinds(dt);
 	player->update(dt);
+	skeleton->update(dt);
 }
 
 void GameState::render(sf::RenderTarget * target)
 {
 	player->render(window);
+	skeleton->render(window);
 }
 
 
 GameState::~GameState()
 {
 	delete player;
+	delete skeleton;
 }
 
 void GameState::initPlayer()
 {
 	player = new Player(0, 0, textures["PLAYER_SHEET"]);
+	skeleton = new Skeleton(100, 100, textures["SKELETON_SHEET"]);
 }
 
 void GameState::initTextures()
 {
 	textures["PLAYER_SHEET"].loadFromFile("src/Resources/images/sprites/Player/player_sheet_2.png");
+	textures["SKELETON_SHEET"].loadFromFile("src/Resources/images/sprites/Enemy/skeleton_sheet.png");
 }

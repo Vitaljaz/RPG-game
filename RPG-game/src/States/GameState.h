@@ -1,7 +1,7 @@
 #pragma once
-
 #include "State.h"
 #include "../Entities/Player.h"
+#include "../Entities/Skeleton.h"
 
 class GameState : public State
 {
@@ -16,6 +16,7 @@ public:
 
 private:
 	Player* player;
+	Skeleton* skeleton;
 
 	void initPlayer();
 	void initTextures();

@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "HitboxController.h"
 
 HitboxController::HitboxController(sf::Sprite& sprite, float offset_x, float offset_y, float width, float height) :

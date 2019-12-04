@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "Button.h"
 
 Button::Button(float x, float y, float w, float h, std::string text)

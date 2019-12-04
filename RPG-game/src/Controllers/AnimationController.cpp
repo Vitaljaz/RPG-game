@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "AnimationController.h"
 
 AnimationController::AnimationController(sf::Sprite& sprite, sf::Texture& textureSheet) 

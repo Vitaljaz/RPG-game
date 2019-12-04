@@ -1,4 +1,4 @@
-#include "../stdafx.h"
+#include "..\stdafx.h"
 #include "MenuState.h"
 
 MenuState::MenuState(sf::RenderWindow *window, std::stack<State*>* states)
