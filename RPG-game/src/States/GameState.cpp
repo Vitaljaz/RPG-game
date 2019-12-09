@@ -50,7 +50,7 @@ GameState::~GameState()
 void GameState::initPlayer()
 {
 	player = new Player(0, 0, textures["PLAYER_SHEET"]);
-	skeleton = new Skeleton(100, 100, textures["SKELETON_SHEET"]);
+	skeleton = new Skeleton(100, 100, textures["SKELETON_SHEET"], player);
 }
 
 void GameState::initTextures()

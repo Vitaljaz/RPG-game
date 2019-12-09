@@ -12,7 +12,7 @@ public:
 	void setAttack();
 
 private:
-	void initComponets();
+	void initComponets(sf::Texture& textureSheet);
 	void initVariables();
 
 	void updateAnimations(const float dt);

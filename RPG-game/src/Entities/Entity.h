@@ -25,5 +25,10 @@ protected:
 	HitboxController* hitboxController;
 	MovementController* movementController;
 	AnimationController* animationController;
+
+	int health;
+	int visibleRange;
+	int attackRange;
+	int damage;
 };
 
